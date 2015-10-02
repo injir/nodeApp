@@ -1,0 +1,11 @@
+extends ../layouts/navigation
+
+block content
+	form(method='POST' action='')
+		label='title'
+			input(type='text' name='title')
+		label='author'
+			input(type='text' name='author')
+		label='body'
+			input(type='text' name='body')
+		input(type='submit' value='create')		

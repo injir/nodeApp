@@ -1,0 +1,45 @@
+doctype html
+html
+	head
+	title= title
+	meta(charset='utf-8')
+	meta(name='viewport' content='width=device-width, initial-scale=1')
+	link(rel='stylesheet', href='/css/main.css')
+
+	script(src='/js/jquery.min.js')
+	script(src='/js/jquery.scrolly.min.js')
+	script(src='/js/jquery.scrollzer.min.js')
+	script(src='/js/skel.min.js')
+	script(src='/js/util.js')
+	script(src='/js/main.js')
+	body
+		div#header
+			div.top
+				div#logo
+					span.image.avatar48
+						img(src='images/injir.jpg')
+					h1#title='Injir'
+					p='Game and Web developer'
+				block navigation
+				
+			div.bottom
+				ul.icons
+					li
+						a(href='#').icon.fa-twitter
+							span.label='Twitter'
+					li
+						a(href='#').icon.fa-twitter
+							span.label='Twitter'
+					li
+						a(href='#').icon.fa-twitter
+							span.label='Twitter'
+					li
+						a(href='#').icon.fa-twitter
+							span.label='Twitter'
+					li
+						a(href='#').icon.fa-twitter
+							span.label='Twitter'
+		div#main							
+			block content
+
+

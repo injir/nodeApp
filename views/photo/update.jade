@@ -1,0 +1,12 @@
+extends ../layouts/navigation
+block content
+	form(method='POST' action='' enctype='multipart/form-data')
+		label='title'
+			input(type='text' name='title' value=model.title)
+		label='author'
+			input(type='text' name='author' value=model.author)
+		label='body'
+			input(type='text' name='body' value=model.body)
+		input(type='file' name='fileToUpload')#fileToUpload
+		input(type='submit' value='create')
+	img(src='/upload/small_'+model._id+'.jpg')

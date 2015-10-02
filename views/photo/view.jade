@@ -1,0 +1,17 @@
+extends ../layouts/navigation
+block content
+	section#photo
+		div.container
+			header
+				h2.title='Photo'
+			p.title='Vitae natoque dictum etiam semper magnis enim feugiat convallis convallisegestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quisfusce hendrerit lacus ridiculus.'
+	div.row
+		a(href='photo/create')='Create'
+	div#gallery
+		div(data-uk-grid='{gutter: 5}')
+			each val in model
+				div.photo_item.uk-width-small-1-2.uk-width-medium-1-4
+					a(href='upload/'+val._id+'.jpg' data-uk-lightbox='{group:"gallery"}')
+						img(src='upload/small_'+val._id+'.jpg')
+						a(href='photo/delete/'+val._id)='Удалить'
+						a(href='photo/update/'+val._id)='Редактировать'	

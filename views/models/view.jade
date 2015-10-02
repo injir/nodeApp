@@ -1,0 +1,20 @@
+extends ../layouts/navigation
+block content
+	section#portfolio.two
+		div.container
+			header
+				h2='3D models'
+			p='Vitae natoque dictum etiam semper magnis enim feugiat convallis convallisegestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quisfusce hendrerit lacus ridiculus.'
+			div.row
+				a(href='/createarticle')='Create'
+				div.4u
+					each val in model
+						article.item
+							a(href='/show/'+val._id).image.fit
+								img(src='images/injir.jpg')
+							header
+								h3=val.title
+								p=val.body
+								p=val.author
+								a(href='/delete/'+val._id)='Удалить'
+								a(href='/show/'+val._id)='Показать'	
