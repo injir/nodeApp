@@ -2,23 +2,15 @@ extends ../layouts/navigation
 
 
 block content
-	div#video
-		div.homepage-hero-module
-					div.video-container
-						div.filter
-						video(autoplay loop).fillWidth
-							source(src='video/MP4/a-working-man.mp4' type='video/mp4')='Your browser does not support the video tag. I suggest you upgrade your browser'
-							source(src='video/WEBM/a-working-man.webm' type='video/webm')='Your browser does not support the video tag. I suggest you upgrade your browser'
-
 	div.row
-		a(href='/createarticle')='Create'
+		a(href='/articles/create')='Create'
 	div
 		each val in model
 			article.item
+				a(href='#').image.fit
+					img(src='/upload/article/background/'+val._id+'.jpg' width=200 height=200)
 				header
 					h3=val.title	
-				a(href='#').image.fit
-					img(src='images/article/')
 				p=val.body
 					p=val.author
 					a(href='/delete/'+val._id)='Удалить'	

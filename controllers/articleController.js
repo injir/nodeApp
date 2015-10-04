@@ -1,35 +1,52 @@
-
+//------------------------REQUIRE--------------------------------
 var Thread = require('../models/Article.js');
 var multiparty = require('multiparty');
-
+var Jimp = require("jimp");
 var fs = require('fs');
-//var Loader = require('../extention/loader');
+var FormParser = require('../extention/formParser');
+//--------------------------------------------------------
 
+
+//--------------------------------------------------------
 exports.post = function(req, res) {
     new Thread({title: req.body.title, author: req.body.author}).save();
 }
+//--------------------------------------------------------
 
+//--------------------------------------------------------
 exports.list = function(req, res) {
   Thread.find(function(err, threads) {
   		
     	res.render('article/view', { title:'Express',model:threads});
   });
 }
-  exports.create = function(req, res) {
-  	if(req.method == 'POST'){
-  	 var form = new multiparty.Form();
-      form.parse(req, function(err,fields,files){ 
-        console.log(files);
-        
-      });
-  	}
-  	else{
-  		 res.render('article/create', { title:'Create Article'});
-  	}
+//--------------------------------------------------------
 
+//--------------------------------------------------------
+exports.create = function(req, res) {
+  var id;
+  if(req.method == 'POST'){
+    var form = new multiparty.Form();
+    form.parse(req, function(err,fields,files){ 
+      new Thread({title: fields.title, author: fields.author, body:fields.body}).save(function(err,room){
+      id = room.id;
+    });   
+         
+     
+      var img = new Jimp(files.fileToUpload[0].path, function (err, image) {
+        image.resize(512, 512).write('./public/upload/article/background/'+id+'.jpg');
+      });
+    });
+  }
+  else{
+  	res.render('article/create', { title:'Create Article'});
   }
 
-   exports.deleteArticle= function(req, res) {
+}
+//--------------------------------------------------------
+
+//--------------------------------------------------------
+exports.deleteArticle= function(req, res) {
    	var id = req.params.id;
    	console.log(id);
    	var item = Thread.findOne({_id:id});
@@ -49,9 +66,13 @@ exports.list = function(req, res) {
       res.render('article/dir',{ model:files, path: path, undo: path});
     });
    }
+//--------------------------------------------------------
+
+//--------------------------------------------------------
 exports.createDir = function(req,res){
     var path = req.body.path;
     var name = req.body.name;
+    console.log(path);
     fs.mkdir(path+'/'+name, function(err){
       if(err) throw err;
     });
@@ -63,20 +84,28 @@ exports.createDir = function(req,res){
      });
 
    }
+//--------------------------------------------------------
+
+//--------------------------------------------------------   
 exports.dirList= function(req,res){
   if ( /^\.\/public\/articles\/?[\w,\/,(А-Я)(а-я),\., ]*/.test(req.body.path) ) {
-
+    if(fs.lstatSync(req.body.path).isDirectory()){
     fs.readdir(req.body.path, function(err,files){
       var path = req.body.path;
 
       if(err) throw err;
        res.render('article/dir',{ model:files, path: path, undo: req.body.undo});
      });
+    }
+    else{
+      res.send('это не каталог');
+    }
    }   
    else{
     res.send('не-а');
    }
  }
+//-------------------------------------------------------- 
  exports.deleteDir= function(req,res){
    var path = req.body.path;
 
@@ -96,19 +125,16 @@ exports.dirList= function(req,res){
        
     res.send('ok'); 
   
- }
+}
+//-------------------------------------------------------- 
+
+//--------------------------------------------------------
  exports.load = function(req,res){
-
-  var loader = require('../extention/loader')(req);
-  //console.log(loader);
-  //loader.formParse();
-  /* var form = new multiparty.Form();
-      form.parse(req, function(err,fields,files){ 
-        console.log(files);
-       
-
-        });
-      
-  */
-   
+ var loader = require('../extention/loader')(req);
  }
+ exports.test = function(req,res){
+
+
+ res.send(Thread);
+ }
+ //--------------------------------------------------------
