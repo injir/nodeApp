@@ -13,12 +13,17 @@ app.use('/nojs', function(req,res){
 app.use('/', routes);
 app.use('/users', users);
 app.use('/portfolio',api.list);
+
+app.use('/articles/dir?',article.dir);
+
 app.use('/articles/dir/list?',article.dirList)
 app.use('/articles/dir/create?',article.createDir)
 //app.use('/articles/dir/:dir?',article.showDir)
-app.use('/articles/dir?',article.dir);
+app.use('/articles/load?',article.load);
+
 app.use('/articles/delete',article.deleteDir);
 app.use('/articles/create',article.create);
+
 
 app.use('/articles?',article.list);
 

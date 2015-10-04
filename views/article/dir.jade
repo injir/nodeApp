@@ -9,4 +9,8 @@ block content
 			- for (var i= 0; model.length > i; i++)  
 				li
 					a(href='/nojs' target='_blank'  data-undo=undo data-src=path+'/'+model[i] onclick='getDir(this); return false;')=model[i]
-					a(href='/nojs' target='_blank' data-undo=undo  data-src=path+'/'+model[i] onclick='deleteDir(this); return false;')='Х'	
+					a(href='/nojs' target='_blank' data-undo=undo  data-src=path+'/'+model[i] onclick='deleteDir(this); return false;')='Х'
+		form(method='POST' action='/articles/load' enctype='multipart/form-data')
+			input(type='text' name='path' value=path)
+			input(type='file' name='fileToUpload' multiple)#fileToUpload
+			input(type='submit' value='create')			

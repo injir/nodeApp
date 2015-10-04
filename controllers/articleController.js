@@ -1,7 +1,9 @@
 
 var Thread = require('../models/Article.js');
 var multiparty = require('multiparty');
+
 var fs = require('fs');
+//var Loader = require('../extention/loader');
 
 exports.post = function(req, res) {
     new Thread({title: req.body.title, author: req.body.author}).save();
@@ -95,4 +97,18 @@ exports.dirList= function(req,res){
     res.send('ok'); 
   
  }
- 
+ exports.load = function(req,res){
+
+  var loader = require('../extention/loader')(req);
+  //console.log(loader);
+  //loader.formParse();
+  /* var form = new multiparty.Form();
+      form.parse(req, function(err,fields,files){ 
+        console.log(files);
+       
+
+        });
+      
+  */
+   
+ }
