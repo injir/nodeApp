@@ -12,6 +12,7 @@
     "debug": "~2.2.0",
     "email-templates": "^2.0.1",
     "express": "~4.13.1",
+    "express-sessions": "^1.0.5",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "nodemailer": "^0.7.1",

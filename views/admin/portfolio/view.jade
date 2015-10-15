@@ -1,0 +1,16 @@
+extends ../layouts/navigation
+block content
+	script(src='/js/infiniteScroll.js')
+	section
+		a(href='/admin/portfolio/create/')='Create'
+		div(data-uk-grid data-page=1 data-ctrl='/portfolio').container#block_content
+			each val in model
+				article.item.uk-width-1-3
+					a(href='#').image.fit
+						img(src='/upload/portfolio/'+val._id+'/image/'+val.img)
+					header
+						h3=val.title
+						p=val.author
+					a(href='/admin/portfolio/update/'+val._id)='Update'
+					a(href='/admin/portfolio/delete/'+val._id)='Delete'
+	a(href='/noja' onclick='infiniteScroll(); return false;')='Load'		

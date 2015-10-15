@@ -8,7 +8,7 @@
 	color:#fff !important;
 }
 #gallery{
-	padding: 1%;
+	padding: 5%;
 	
 }
 .photo_item{
@@ -64,4 +64,30 @@
 }
 .video-container video.fillWidth {
     width: 100%;
+}
+.article_image{
+    width: auto !important;
+    margin: 0 auto !important;
+}
+.item{
+    padding: 20px;
+}
+.item h3, .item p{
+    text-align: center;
+}
+.conteiner,.submit{
+
+    margin: 0 auto;
+}
+.contact > * {
+ margin-top: 10px;
+}
+.submit > input[type='submit']{
+    display: block;
+
+    margin: 20px auto;
+
+}
+.middle{
+   
 }

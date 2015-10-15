@@ -1,0 +1,8 @@
+extends ../layouts/navigation
+block content
+	section#portfolio.two
+		div.container
+			header
+				script(src='/js/Babylon/dist/babylon.2.2.js')
+				canvas(data-id=''+model._id)#renderCanvas
+				script(src='/js/render.js')

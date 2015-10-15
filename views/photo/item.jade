@@ -1,0 +1,4 @@
+each val in model
+	div.photo_item.uk-width-small-1-2.uk-width-medium-1-4
+					a(href='/upload/photo/'+val._id+'/image/original_'+val.img data-uk-lightbox='{group:"gallery"}')
+						img(src='/upload/photo/'+val._id+'/image/'+val.img)

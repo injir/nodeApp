@@ -1,0 +1,21 @@
+extends layout
+
+block navigation
+	nav#nav
+		ul
+			li
+				a( href="/").skel-layers-ignoreHref
+					span.icon.fa-home='Home'
+			li
+				a( href="/admin/portfolio")#portfolio-link.skel-layers-ignoreHref
+					span.icon.fa-th='Portfolio'
+			li
+				a( href="/admin/photo").skel-layers-ignoreHref
+					span.icon.fa-home='Photo'	
+			li
+				a( href="/admin/models").skel-layers-ignoreHref
+					span.icon.fa-home='3d Models'
+			li
+				a( href="/logout").skel-layers-ignoreHref
+					span.icon.fa-home='Logout'		
+

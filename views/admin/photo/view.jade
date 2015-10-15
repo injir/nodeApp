@@ -1,0 +1,13 @@
+extends ../layouts/navigation
+block content
+	script(src='/js/infiniteScroll.js')
+	div.row
+		a(href='/admin/photo/create')='Create'
+	div#gallery
+		div(data-uk-grid='{gutter: 5}' data-page=1 data-ctrl='/photo')#block_content
+			each val in model
+				div.photo_item.uk-width-small-1-2.uk-width-medium-1-4
+					a(href='/upload/photo/'+val._id+'/image/original_'+val.img data-uk-lightbox='{group:"gallery"}')
+						img(src='/upload/photo/'+val._id+'/image/'+val.img)
+					a(href='/admin/photo/delete/'+val._id)='Delete'	
+		a(href='/nojs' onclick='infiniteScroll(); return false')='LOAD'				

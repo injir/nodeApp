@@ -1,0 +1,10 @@
+each val in model
+				article.item.uk-width-1-3
+					a(href='#').image.fit
+						img(src='images/injir.jpg')
+					header
+						h3=val.title
+						p=val.author
+					if session
+						a(href='/admin/portfolio/update/'+val._id)='Update'
+						a(href='/admin/portfolio/delete/'+val._id)='Delete'
